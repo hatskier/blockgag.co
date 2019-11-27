@@ -1,15 +1,8 @@
 --- TASKS ---
 
 - First
-  - switch to mdc
-    - connect google fonts and icons (later)
-    - TODO
-  - define routes
-    - /posts/:category
-    - /post/:id
-    - /about
-    - /add
-  - define app page structure
+  - add modal windows
+  - 
 
 - Later
   - Implement night mode

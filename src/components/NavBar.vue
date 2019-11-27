@@ -32,13 +32,6 @@
 </template>
 
 <script>
-// import NavBarLink from './NavBarLink.vue';
-// import Blockchain from '../modules/blockstackUtils'
-// import State from '../modules/state'
-// import Vue from 'vue'
-// import * as mdc from 'material-components-web'
-// import TopAppBar from 'material-components-vue/dist/top-app-bar'
-// import IconButton from 'material-components-vue/dist/icon-button'
 
 export default {
   name: "NavBar",
@@ -53,7 +46,7 @@ export default {
   components: {
   },
   methods: {}
-};
+}
 </script>
 
 <style lang="scss" scoped>

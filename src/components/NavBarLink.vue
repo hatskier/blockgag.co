@@ -28,7 +28,7 @@ export default {
       return this.$route.fullPath
     }
   }
-};
+}
 </script>
 
 <style scoped>
