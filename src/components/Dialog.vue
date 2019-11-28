@@ -31,11 +31,9 @@ export default {
   name: "Dialog",
   data() {
     return {
-      Utils
     }
   },
   props: {
-    show: Boolean,
     title: String,
   },
   computed: {

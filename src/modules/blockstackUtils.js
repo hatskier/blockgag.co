@@ -27,6 +27,10 @@ async function readObjFromFile(filename, opts={ decrypt: true }) {
 export default {
   pendingAuth: false,
 
+  isUserSignedIn() {
+    return userSession.isUserSignedIn()
+  },
+
   getUserSession() {
     return userSession
   },
@@ -35,8 +39,14 @@ export default {
     return userSession.loadUserData().username
   },
 
-  isUserSignedIn() {
-    return userSession.isUserSignedIn()
+  getUserAvatar() {
+    if (userSession.isUserSignedIn()) {
+      let userData = userSession.loadUserData()
+      if (userData.profile && userData.profile.image && userData.profile.image[0]) {
+        return userData.profile.image[0].contentUrl
+      }
+    }
+    return null
   },
 
   async checkAuth() {
