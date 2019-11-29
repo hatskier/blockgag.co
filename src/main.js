@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueLazyload from 'vue-lazyload'
 
 import App from './App.vue'
 
@@ -12,6 +13,13 @@ import Add from './components/pages/Add.vue'
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
+Vue.use(VueLazyload, {
+  lazyComponent: true,
+  preLoad: 1.3,
+  observer: true,
+  // loading: '../public/loading.gif',
+})
+
 
 const routes = [
   { path: '/', component: Home },

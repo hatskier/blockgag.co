@@ -10,9 +10,9 @@
       </p>
       
 
-      <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid ">
         <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell--span-12">
+          <div class="mdc-layout-grid__cell--span-12 mdc-elevation--z1">
             <!-- File upload area -->
             <div v-if="addingType == 'upload'" class="file-upload-area">
               <file-pond
@@ -52,7 +52,7 @@
               <Multiselect
                 v-model="selectedTags"
                 :multiple="true"
-                :close-on-select="false"
+                :close-on-select="true"
                 :clear-on-select="false"
                 :preselect-first="false"
                 selectLabel=""
@@ -60,6 +60,16 @@
                 :options="availableTags">
 
               </Multiselect>
+            </div>
+
+            <div id="upload-button-container">
+              <button
+                id="upload-button"
+                @click="uploadButtonClicked()"
+                class="mdc-button mdc-button--raised sign-in-button">
+                <div class="mdc-button__ripple"></div>
+                  UPLOAD
+              </button>
             </div>
 
           </div>
@@ -94,15 +104,6 @@
 
           
         </div>
-        <div id="upload-button-container">
-              <button
-                id="upload-button"
-                @click="uploadButtonClicked()"
-                class="mdc-button mdc-button--raised sign-in-button">
-                <div class="mdc-button__ripple"></div>
-                  UPLOAD
-              </button>
-            </div>
       </div>
 
     </div>
@@ -116,7 +117,6 @@ import BlockstackUtils from '../../modules/blockstackUtils'
 import axios from 'axios'
 import Multiselect from 'vue-multiselect'
 import vueFilePond from 'vue-filepond'
-import { link } from 'fs'
 
 import 'filepond/dist/filepond.min.css'
 
@@ -142,7 +142,7 @@ function toastrLongSuccessNotification(msg) {
     msg,
     '',
     {
-      "timeOut": "60000",
+      "timeOut": "7000",
       "closeButton": true,
     })
 }
@@ -191,7 +191,7 @@ export default {
     onFileAdded(error, file) {
       if (error) {
         console.error(error)
-        toastr.error('Error occured :(')
+        window.toastr.error('Error occured :(')
       } else {
         this.uploadedImgBlobUrl = window.URL.createObjectURL(file.source)
         console.log('File uploaded: ' + this.uploadedImgBlobUrl)
@@ -257,6 +257,8 @@ export default {
   /* background: lightblue; */
   /* height: 200px; */
   padding-top: 10px;
+  width: 600px;
+  margin: auto;
   text-align: center;
 }
 
@@ -301,6 +303,7 @@ export default {
 #upload-button-container {
   margin: auto;
   margin-top: 30px;
+  margin-bottom: 30px;
   width: 105px;
 }
 
@@ -315,10 +318,6 @@ export default {
   padding-bottom: 30px;
   border-radius: 5px;
   border: 1px solid gray;
-}
-
-.filepond--root {
-  height: 500px !important;
 }
 
 </style>

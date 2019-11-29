@@ -33,7 +33,7 @@ window.toastr.options = {
   "showDuration": 3000,
   "hideDuration": 10,
   "iconClass": "hidden",
-  "positionClass": "toast-top-center",
+  // "positionClass": "toast-top-center",
 }
 
 export default {

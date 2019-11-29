@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <img src="https://img-9gag-fun.9cache.com/photo/aL0p125_460swp.webp" />
+  <div class="post mdc-elevation--z1">
+    <img v-lazy="post.imgGaiaPublicUrl" class="image-in-post" />
   </div>
 </template>
 
@@ -9,13 +9,25 @@
 export default {
   name: "Post",
   props: {
-    text: Number,
-    img: String,
+    post: Object,
   }
 }
 
 </script>
 
 <style scoped>
-/* TODO */
+.image-in-post {
+  max-height: 80vh;
+  max-width: 45vw;
+  margin: auto;
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.post {
+  margin-bottom: 50px !important;
+  margin: auto;
+  width: 50vw;
+}
 </style>

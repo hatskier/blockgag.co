@@ -4,10 +4,10 @@ import axios from 'axios'
 
 import BlockgagPost from '../models/BlockgagPost'
 
-const FILENAMES = {
-  contacts: 'dfmapp_contacts.json',
-  debts: 'dfmapp_debts.json'
-}
+// const FILENAMES = {
+//   contacts: 'dfmapp_contacts.json',
+//   debts: 'dfmapp_debts.json'
+// }
 const RADIKS_URL = 'https://radiks.dece.app'
 
 const appConfig = new blockstack.AppConfig(['store_write', 'publish_data', 'email'])
@@ -19,21 +19,21 @@ configure({
   apiServer: RADIKS_URL,
 })
 
-async function saveObjectToFile(obj, filename, opts={ encrypt: true }) {
-  await userSession.putFile(filename, JSON.stringify(obj), opts)
-}
+// async function saveObjectToFile(obj, filename, opts={ encrypt: true }) {
+//   await userSession.putFile(filename, JSON.stringify(obj), opts)
+// }
 
-async function readObjFromFile(filename, opts={ decrypt: true }) {
-  console.log('Reading the file: ' + filename)
-  const content = await userSession.getFile(filename, opts)
-  try {
-    console.log('Got content: ' + content)
-    return JSON.parse(content)
-  } catch (e) {
-    console.error(e)
-    return null
-  }
-}
+// async function readObjFromFile(filename, opts={ decrypt: true }) {
+//   console.log('Reading the file: ' + filename)
+//   const content = await userSession.getFile(filename, opts)
+//   try {
+//     console.log('Got content: ' + content)
+//     return JSON.parse(content)
+//   } catch (e) {
+//     console.error(e)
+//     return null
+//   }
+// }
 
 export default {
   pendingAuth: false,

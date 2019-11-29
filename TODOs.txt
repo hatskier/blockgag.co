@@ -1,6 +1,26 @@
 --- TASKS ---
 
+- Make nice posts interface
+  - should be responsive in sense of image
+  - should have nice descriptions and tags
+  - should link to each post page
+  - should contain share buttons for facebook
+- Connect lazy load
+- Create page for each post
+- Implement tags and categories selection
 - Add green loading bar for add page
+- Implement live emotions
+  - Add Total time on blockgag
+  - Add Time on blockgag today
+  - Add Laugh time
+  - Connect emotions recognition and time saving
+
+Image addresses
+- https://i.memeful.com/memes/dBO1bJv/One-Does-Not-Simply.jpg
+
+
+https://i.memeful.com/memes/dq6WxAJ/First-Day-on-the-Internet-Kid.jpg
+
 
 - Post with blockstack category
 https://memeful.com/meme/d1X2YDa/Success-Kid

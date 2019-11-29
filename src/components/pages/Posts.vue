@@ -7,9 +7,7 @@
       <div class="mdc-layout-grid__cell--span-6">
         <div class="posts-block">
           <div v-for="(post, index) in posts" :key="index" class="post">
-            <h3>{{ post.description }}</h3>
-            <p>{{ post.tags }}</p>
-            <img class="post-image" :src="post.imgGaiaPublicUrl">
+            <Post :post="post" />
           </div>
           <div class="post"></div>
 
@@ -29,6 +27,7 @@
 
 import Categories from '../Categories'
 import BlockstackUtils from '../../modules/blockstackUtils'
+import Post from '../Post'
 
 export default {
   name: "Posts",
@@ -43,6 +42,7 @@ export default {
   },
   components: {
     Categories,
+    Post,
   },
   created() {
     BlockstackUtils.getAllPosts().then((fetchedPosts) => {
@@ -64,22 +64,6 @@ export default {
   height: 700px;
   width: 20%;
   position: fixed;
-  /* top: 0;
-  bottom: 0; */
-  /* background-color: aquamarine; */
 }
 
-.post {
-  width: 100%;
-  /* height: 500px; */
-  background-color: lightcyan;
-  margin-bottom: 30px;
-}
-
-.post img {
-  width: 100%;
-  /* width: 500px; */
-  /* max-height: 80vh; */
-  margin: auto;
-}
 </style>
