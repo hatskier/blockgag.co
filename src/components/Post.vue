@@ -27,7 +27,7 @@ export default {
 
 .post {
   margin-bottom: 50px !important;
-  margin: auto;
+  /* margin: auto; */
   width: 50vw;
 }
 </style>

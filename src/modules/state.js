@@ -8,6 +8,7 @@ let State = {
   contacts: {},
   debts: {},
   syncStatus: 'Synced',
+  liveEmotionsEnabled: false,
 
   // Methods
   async loadStateFromBlockchain() {
@@ -78,6 +79,11 @@ let State = {
     const newEl = _.clone(el)
     Vue.set(this[collectionName], el.id, newEl)
     return newEl
+  },
+
+  toggleLiveEmotions() {
+    let oldVal = this.liveEmotionsEnabled
+    Vue.set(this, 'liveEmotionsEnabled', !oldVal)
   },
 
   defaultRemove(el, collectionName, entityName) {

@@ -22,7 +22,7 @@ Vue.use(VueLazyload, {
 
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: Posts },
   { path: '/home', component: Home },
   { path: '/posts', component: Posts },
   { path: '/posts/:category', component: Posts },

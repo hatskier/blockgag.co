@@ -1,5 +1,5 @@
 <template>
-  <Dialog title="Log in with blockstack">
+  <Dialog title="Log in to add posts">
     <!-- <h4>What is Blockstack?</h4> -->
     <p class="blockstack-description">
       BlockGAG is built using

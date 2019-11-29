@@ -17,9 +17,14 @@
           <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button> -->
           <div class="navbar-el">
             <!-- TODO update with live emotions feature -->
-            <button @click="tryLiveEmotions()" class="mdc-button mdc-button--outlined">
+            <button @click="toggleLiveEmotions()" class="mdc-button mdc-button--outlined">
               <div class="mdc-button__ripple"></div>
-                TRY LIVE EMOTIONS
+                <span v-if="!State.liveEmotionsEnabled">
+                  TRY LIVE EMOTIONS
+                </span>
+                <span v-if="State.liveEmotionsEnabled">
+                  STOP LIVE EMOTIONS
+                </span>
             </button>
           </div>
 
@@ -75,6 +80,8 @@ import BlockstackUtils from '../modules/blockstackUtils'
 import Menu from './Menu'
 import SignInModal from './SignInModal'
 
+import State from '../modules/state'
+
 
 import { MDCDialog } from '@material/dialog'
 import { MDCMenu } from '@material/menu'
@@ -89,6 +96,7 @@ export default {
       signedIn: BlockstackUtils.isUserSignedIn(),
       modalType: '',
       dialog: null,
+      State,
     }
   },
   computed: {
@@ -123,8 +131,8 @@ export default {
     openSettings() {
       window.toastr.success('Settings opening... Not implemented yet')
     },
-    tryLiveEmotions() {
-      window.toastr.success('Trying live emotions.. Not implemented yet')
+    toggleLiveEmotions() {
+      State.toggleLiveEmotions()
     },
     logIn() {
       this.closeSignInModal()

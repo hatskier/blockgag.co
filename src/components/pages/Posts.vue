@@ -17,7 +17,9 @@
         </div>
       </div>
       <div class="mdc-layout-grid__cell--span-3">
-        <div class="live-emotions-block"></div>
+        <div class="live-emotions-block">
+          <LiveEmotions :enabled="State.liveEmotionsEnabled" />
+        </div>
       </div>
     </div>
   </div>
@@ -28,12 +30,15 @@
 import Categories from '../Categories'
 import BlockstackUtils from '../../modules/blockstackUtils'
 import Post from '../Post'
+import LiveEmotions from '../LiveEmotions'
+import State from '../../modules/state'
 
 export default {
   name: "Posts",
   data() {
     return {
       posts: [],
+      State,
     }
   },
   props: {
@@ -43,6 +48,7 @@ export default {
   components: {
     Categories,
     Post,
+    LiveEmotions,
   },
   created() {
     BlockstackUtils.getAllPosts().then((fetchedPosts) => {
