@@ -3,9 +3,13 @@
     <header class="mdc-top-app-bar mdc-top-app-bar--dense">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <img id="navbar-logo" src="../../public/blockgag-logo.png" />
+          <a href="#/posts">
+            <img id="navbar-logo" src="../../public/blockgag-logo.png" />
+          </a>
           <!-- <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button> -->
-          <span class="mdc-top-app-bar__title white">GAG</span>
+          <a class="normal-text" href="#/posts">
+            <span class="mdc-top-app-bar__title white">GAG</span>
+          </a>
         </section>
 
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
@@ -13,18 +17,22 @@
           <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button> -->
           <div class="navbar-el">
             <!-- TODO update with live emotions feature -->
-            <button @click="logIn()" class="mdc-button mdc-button--outlined">
+            <button @click="tryLiveEmotions()" class="mdc-button mdc-button--outlined">
               <div class="mdc-button__ripple"></div>
                 TRY LIVE EMOTIONS
             </button>
           </div>
 
           <!-- Try also add, add_circle, add_box, add_circle_outline, add_comment, post_add, add_a_photo, add_photo_alternate, add_to_photos, note_add -->
-          <button
-            v-if="signedIn"
-            class="mdc-icon-button material-icons white add-photo-icon">
-            add_photo_alternate
-          </button>
+          <div class="navbar-el">
+            <a
+              href="#/add"
+              v-if="signedIn"
+              class="mdc-icon-button material-icons white add-photo-icon">
+              add_photo_alternate
+            </a>
+          </div>
+          
           <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button> -->
 
           <div class="navbar-el">
@@ -38,28 +46,16 @@
                 {{ usernameFirstLetter }}
               </div>
 
-              <div class="mdc-menu mdc-menu-surface">
-                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
-                  <li class="mdc-list-item" role="menuitem">
-                    <span class="mdc-list-item__text">
-                      <i class="material-icons">settings</i>
-                      Settings
-                    </span>
-                  </li>
-                  <li @click="logOut()" class="mdc-list-item" role="menuitem">
-                    <span class="mdc-list-item__text">
-                      <i class="material-icons">
-                        directions_walk
-                      </i>
-                      Log out
-                    </span>
-                  </li>
-                </ul>
-              </div>
+              <Menu
+                :onSettingsClicked="openSettings"
+                :onLogOutClicked="logOut" />
 
             </div>
 
-            <button @click="openSignInModal()" v-if="!signedIn" class="mdc-button mdc-button--outlined">
+            <button
+              @click="openSignInModal()"
+              v-if="!signedIn"
+              class="mdc-button mdc-button--raised sign-in-button">
               <div class="mdc-button__ripple"></div>
                 SIGN IN
             </button>
@@ -68,32 +64,17 @@
       </div>
     </header>
 
-    <Dialog title="Log in to get started">
-      <!-- <h4>What is Blockstack?</h4> -->
-      <p class="blockstack-description">
-        Blockgag is built using
-          <a target="_blank" href="https://blockstack.org/try-blockstack">Blockstack</a>
-        infrastructure,
-        allowing us to provide decentralized encrypted storage.
-      </p>
-
-      <p class="blockstack-description">
-        Blockstack ID provides user-controlled login and storage
-        that enable you to take back control of your identity and data.
-      </p>
-
-      <button @click="logIn()" class="mdc-button mdc-button--raised continue-with-blockstack-button">
-        <div class="mdc-button__ripple"></div>
-          CONTINUE WITH BLOCKSTACK
-      </button>
-    </Dialog>
+    <SignInModal :onLogInButtonClicked="logIn" />
 
   </div>
 </template>
 
 <script>
 import BlockstackUtils from '../modules/blockstackUtils'
-import Dialog from './Dialog'
+
+import Menu from './Menu'
+import SignInModal from './SignInModal'
+
 
 import { MDCDialog } from '@material/dialog'
 import { MDCMenu } from '@material/menu'
@@ -120,7 +101,8 @@ export default {
     }
   },
   components: {
-    Dialog,
+    Menu,
+    SignInModal,
   },
   methods: {
     openSignInModal() {
@@ -138,12 +120,17 @@ export default {
       const menu = MDCMenu.attachTo(document.querySelector('.mdc-menu'))
       menu.open = !menu.open
     },
+    openSettings() {
+      window.toastr.success('Settings opening... Not implemented yet')
+    },
+    tryLiveEmotions() {
+      window.toastr.success('Trying live emotions.. Not implemented yet')
+    },
     logIn() {
       this.closeSignInModal()
       window.localStorage.locationBeforeRedirection = location.href;
       window.toastr.success(
-        'Blockstack authentication started.'
-        + 'You will be redirected to blockstack page in few seconds',
+        'Blockstack authentication started...',
         '',
         {
           "timeOut": "20000",
@@ -227,12 +214,11 @@ export default {
     margin: 0;
   }
 
-  p.blockstack-description {
-    margin-left: 5px;
-    width: 300px;
+  .sign-in-button {
+    color: white !important;
   }
 
-  .continue-with-blockstack-button {
-    color: white !important;
+  .normal-text {
+    text-decoration: none;
   }
 </style>

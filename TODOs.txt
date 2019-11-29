@@ -1,20 +1,14 @@
 --- TASKS ---
 
+- Add green loading bar for add page
+
 - Post with blockstack category
 https://memeful.com/meme/d1X2YDa/Success-Kid
 https://memeful.com/meme/MAp1nKg/First-World-Problem
 https://memeful.com/meme/Rp6beJa/Matrix-Morpheus
-https://memeful.com/meme/Rj3bBQm/One-Does-Not-Simply
+https://memeful.com/meme/dBO1bJv/One-Does-Not-Simply
 https://memeful.com/meme/dq6WxAJ/First-Day-on-the-Internet-Kid
 
-- First
-  - add modal windows
-  - 
-
-- Later
-  - Fix problem with modal window
-  - Implement night mode
-  - Connect live-emotions feature
 
 
 --- SPECIFICATION ---

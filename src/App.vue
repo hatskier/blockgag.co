@@ -8,8 +8,8 @@
       </router-view>
       <h2
         v-if="BlockstackUtils.pendingAuth"
-        class="centered">
-        Authentication in progress
+        class="centered authentication-in-progress-title">
+        Authentication in progress...
       </h2>
     </div>
   </div>
@@ -30,8 +30,10 @@ BlockstackUtils.checkAuth().then(() => {
 window.toastr.options = {
   "closeButton": true,
   "progressBar": false,
-  "showDuration": "3000",
-  "positionClass": "toast-top-center"
+  "showDuration": 3000,
+  "hideDuration": 10,
+  "iconClass": "hidden",
+  "positionClass": "toast-top-center",
 }
 
 export default {
@@ -46,6 +48,8 @@ export default {
   }
 }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style lang="scss">
   // TODO connect from the same origin later
@@ -97,6 +101,14 @@ export default {
 
   .toast {
     opacity: 1 !important;
+  }
+
+  .authentication-in-progress-title {
+    margin-top: 50px;
+  }
+
+  .mdc-button--raised {
+    color: white !important;
   }
 
 </style>
