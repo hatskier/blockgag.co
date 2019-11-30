@@ -2,12 +2,13 @@
   <div>
     <div class="add-card">
 
-      <p v-if="addedPostUrl">
+      <!-- TODO implement it again later -->
+      <!-- <p v-if="addedPostUrl">
         Your new post is available at
         <a target="_blank" :href="addedPostUrl">
           {{ addedPostUrl }}
         </a>
-      </p>
+      </p> -->
       
 
       <div class="mdc-layout-grid ">

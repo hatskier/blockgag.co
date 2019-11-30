@@ -129,10 +129,18 @@ export default {
       menu.open = !menu.open
     },
     openSettings() {
-      window.toastr.success('Settings opening... Not implemented yet')
+      // window.toastr.success('Settings opening... Not implemented yet')
     },
     toggleLiveEmotions() {
-      State.toggleLiveEmotions()
+      if (!State.liveEmotionsEnabled && !localStorage.liveEmotionExplanationShowed) {
+        if (confirm('Live emotions is an innovative feature, which uses your web camera to analyze your emotions and calculate the time of being happy o blockgag. Note, that your video is private and we don\'t send it anywhere.')) {
+          localStorage.liveEmotionExplanationShowed = true
+          State.toggleLiveEmotions()  
+        }
+      } else {
+        State.toggleLiveEmotions()
+      }
+      
     },
     logIn() {
       this.closeSignInModal()
