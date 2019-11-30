@@ -9,6 +9,7 @@ let State = {
   debts: {},
   syncStatus: 'Synced',
   liveEmotionsEnabled: false,
+  selectedTag: '',
 
   // Methods
   async loadStateFromBlockchain() {
@@ -86,16 +87,20 @@ let State = {
     Vue.set(this, 'liveEmotionsEnabled', !oldVal)
   },
 
-  defaultRemove(el, collectionName, entityName) {
-    if (!el.id) {
-      throw new Error(`${entityName} without id can not be removed`)
-    }
-    console.log(`Removing ${entityName}`)
-    console.log(el)
-    let newElems = _.clone(this[collectionName])
-    delete newElems[el.id]
-    Vue.set(this, collectionName, newElems)
-  }
+  selectTag(tag) {
+    Vue.set(this, 'selectedTag', tag)
+  },
+
+  // defaultRemove(el, collectionName, entityName) {
+  //   if (!el.id) {
+  //     throw new Error(`${entityName} without id can not be removed`)
+  //   }
+  //   console.log(`Removing ${entityName}`)
+  //   console.log(el)
+  //   let newElems = _.clone(this[collectionName])
+  //   delete newElems[el.id]
+  //   Vue.set(this, collectionName, newElems)
+  // }
 }
 
 export default State

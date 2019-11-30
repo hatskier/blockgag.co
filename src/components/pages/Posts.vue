@@ -2,11 +2,11 @@
   <div class="mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
       <div class="mdc-layout-grid__cell--span-3">
-        <Categories />
+        <Tags />
       </div>
       <div class="mdc-layout-grid__cell--span-6">
         <div class="posts-block">
-          <div v-for="(post, index) in posts" :key="index" class="post">
+          <div v-for="(post, index) in filteredPosts" :key="index" class="post">
             <Post :post="post" />
           </div>
           <div class="post"></div>
@@ -27,7 +27,7 @@
 
 <script>
 
-import Categories from '../Categories'
+import Tags from '../Tags'
 import BlockstackUtils from '../../modules/blockstackUtils'
 import Post from '../Post'
 import LiveEmotions from '../LiveEmotions'
@@ -46,7 +46,7 @@ export default {
     img: String,
   },
   components: {
-    Categories,
+    Tags,
     Post,
     LiveEmotions,
   },
@@ -55,6 +55,21 @@ export default {
       this.posts = fetchedPosts
     })
   },
+  computed: {
+    filteredPosts: function() {
+      if (this.posts && this.posts.length) {
+        let result = JSON.parse(JSON.stringify(this.posts))
+        result.sort((p1, p2) => p2.createdAt - p1.createdAt)
+
+        let selectedTag = this.State.selectedTag
+        if (selectedTag && !['Hot', 'Trending', 'Fresh'].includes(selectedTag)) {
+          return result.filter(p => (p.tags && p.tags.includes(selectedTag)))
+        }
+        return result
+      }
+      return []
+    }
+  }
 }
 
 </script>

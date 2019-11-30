@@ -24,9 +24,9 @@ export default {
       title: 'Gaming',
       icon: 'videogame_asset'
     },
-    {
-      title: 'Video',
-      icon: 'ondemand_video'
-    },
+    // {
+    //   title: 'Video',
+    //   icon: 'ondemand_video'
+    // },
   ]
 }

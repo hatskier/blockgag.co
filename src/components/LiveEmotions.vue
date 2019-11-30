@@ -1,6 +1,6 @@
 <template>
   <div v-if="enabled" class="live-emotions-container ">
-    <video id="video" class="mdc-elevation--z1" width="250" height="180" autoplay muted></video>
+    <video id="video" class="mdc-elevation--z1" width="200" height="120" autoplay muted></video>
 
     <span v-if="enabled" id="expression-emoji">
       {{ expressionEmoji }}
@@ -21,20 +21,26 @@
 import { nets, detectAllFaces, TinyFaceDetectorOptions } from 'face-api.js'
 
 const tickSize = 300 // ms
+let video
 
 // Global stram variable for this component
 let stream
 let timer
-let modelsLoaded = false
-let loadingModels = false
 
 async function startVideo(onExpressionsDetected) {
   try {
+    video = document.getElementById('video')
+    window.toastr.success('ML models loading started')
+    await loadMLModels()
+    setTimeout(() => {
+      window.toastr.success('ML is ready. Emoji should show your emotions now')
+    }, 2000)
+
     stream = await navigator.mediaDevices.getUserMedia({
       video: true,
       audio: false
     })
-    const video = document.getElementById('video')
+    video = document.getElementById('video')
     video.srcObject = stream
 
     timer = setInterval(async () => {
@@ -56,29 +62,22 @@ async function stopVideo() {
 
 async function loadMLModels() {
   console.log('Loading ML models')
-  loadingModels = true
   await Promise.all([
     nets.tinyFaceDetector.loadFromUri('/MLModels'),
     nets.faceLandmark68Net.loadFromUri('/MLModels'),
     nets.faceRecognitionNet.loadFromUri('/MLModels'),
     nets.faceExpressionNet.loadFromUri('/MLModels')
   ])
-  modelsLoaded = true
-  loadingModels = false
   console.log('ML models loaded')
 }
 
 async function detectExpressions() {
-  if (loadingModels) {
-    return
-  }
-  if (!modelsLoaded) {
-    await loadMLModels()
-  }
   let detections = await detectAllFaces(video, new TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-  let expressions = detections[0].expressions
-  // console.log(expressions)
-  return expressions
+  if (detections && detections[0]) {
+    return detections[0].expressions
+  } else {
+    return {}
+  }
 }
 
 function updateHappyTime(expressions) {
@@ -192,15 +191,15 @@ export default {
 
 #expression-emoji {
   position: fixed;
-  top: 120px;
+  top: 115px;
   right: 80px;
-  font-size: 140px;
+  font-size: 100px;
 }
 
 #live-emotions-stats {
-  width: 256px;
+  width: 206px;
   /* height: 300px; */
-  top: 350px;
+  top: 300px;
   position: fixed;
   right: 30px;
 }
