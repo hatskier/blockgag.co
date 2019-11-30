@@ -33,6 +33,14 @@ import Post from '../Post'
 import LiveEmotions from '../LiveEmotions'
 import State from '../../modules/state'
 
+// TODO this function should be removed in future
+function swap(ar, i, j) {
+  let valI = ar[i]
+  ar[i] = ar[j]
+  ar[j] = valI
+  return ar
+}
+
 export default {
   name: "Posts",
   data() {
@@ -65,6 +73,18 @@ export default {
         if (selectedTag && !['Hot', 'Trending', 'Fresh'].includes(selectedTag)) {
           return result.filter(p => (p.tags && p.tags.includes(selectedTag)))
         }
+
+        // TODO when likes and comments will be implemented
+        // Hot and Trending will be filtered in better way
+        if (selectedTag == 'Hot' && result.length > 3) {
+          result = swap(result, 0, result.length - 1)
+          result = swap(result, 1, result.length - 2)
+        }
+        if (selectedTag == 'Trending' && result.length > 3) {
+          result = swap(result, 0, result.length - 2)
+          result = swap(result, 1, result.length - 1)
+        }
+
         return result
       }
       return []

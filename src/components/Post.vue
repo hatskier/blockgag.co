@@ -17,8 +17,15 @@ export default {
 
 <style scoped>
 .image-in-post {
-  max-height: 80vh;
+  /* max-height: 90vh;
   max-width: 45vw;
+  min-width: 50vh; */
+  /* Some magic is going here - analyze later */
+  width: 48vw;
+  height: auto;
+  max-width: none;
+  max-height: 90vh;
+  object-fit: contain;
   margin: auto;
   display: block;
   padding-top: 20px;

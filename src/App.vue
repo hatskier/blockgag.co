@@ -111,4 +111,30 @@ export default {
     color: white !important;
   }
 
+
+
+  // DARK MODE STYLING
+  body.dark-mode {
+    background: black !important;
+  }
+  body.dark-mode .mdc-list-item__text {
+    color: white !important;
+  }
+  body.dark-mode .alternative-option {
+    color: white !important;
+  }
+  body.dark-mode #link-to-meme-generator {
+    color: white !important;
+  }
+  body.dark-mode  #live-emotions-stats {
+    color: white !important;
+  }
+  body.dark-mode .tag-img {
+    filter: invert(100%);
+  }
+  body.dark-mode #night-mode-icon {
+    // filter: invert(100%);
+    color: yellow;
+  }
+
 </style>

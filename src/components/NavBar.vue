@@ -37,6 +37,16 @@
               add_photo_alternate
             </a>
           </div>
+
+          <div class="navbar-el">
+            <a
+              id="night-mode-icon"
+              @click="toggleDarkMode()"
+              class="mdc-icon-button material-icons white add-photo-icon">
+              brightness_4
+            </a>
+            
+          </div>
           
           <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button> -->
 
@@ -113,6 +123,10 @@ export default {
     SignInModal,
   },
   methods: {
+    toggleDarkMode() {
+      let bodyEl = document.getElementsByTagName('body')[0]
+      bodyEl.classList.toggle('dark-mode')
+    },
     openSignInModal() {
       let elToAttachTo = document.querySelector('.mdc-dialog')
       this.dialog = MDCDialog.attachTo(elToAttachTo)
@@ -236,5 +250,11 @@ export default {
 
   .normal-text {
     text-decoration: none;
+  }
+
+  #night-mode-icon {
+    margin-left: 0px;
+    position: relative;
+    right: 10px;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div v-if="enabled" class="live-emotions-container ">
-    <video id="video" class="mdc-elevation--z1" width="200" height="120" autoplay muted></video>
+    <video id="video" class="mdc-elevation--z1" width="200" height="150" autoplay muted></video>
 
     <span v-if="enabled" id="expression-emoji">
       {{ expressionEmoji }}
@@ -32,9 +32,6 @@ async function startVideo(onExpressionsDetected) {
     video = document.getElementById('video')
     window.toastr.success('ML models loading started')
     await loadMLModels()
-    setTimeout(() => {
-      window.toastr.success('ML is ready. Emoji should show your emotions now')
-    }, 2000)
 
     stream = await navigator.mediaDevices.getUserMedia({
       video: true,
@@ -42,6 +39,9 @@ async function startVideo(onExpressionsDetected) {
     })
     video = document.getElementById('video')
     video.srcObject = stream
+    setTimeout(() => {
+      window.toastr.success('ML is ready. Emoji should show your emotions now')
+    }, 200)
 
     timer = setInterval(async () => {
       let expressions = await detectExpressions()
@@ -191,9 +191,9 @@ export default {
 
 #expression-emoji {
   position: fixed;
-  top: 115px;
-  right: 80px;
-  font-size: 100px;
+  top: 120px;
+  right: 70px;
+  font-size: 120px;
 }
 
 #live-emotions-stats {
