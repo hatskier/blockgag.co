@@ -9,6 +9,12 @@
           {{ addedPostUrl }}
         </a>
       </p> -->
+      <p class="centered" v-if="addedPostUrl">
+        Go back to the 
+        <a href="#/posts">
+          Posts page
+        </a>
+      </p>
       
 
       <div class="mdc-layout-grid ">
@@ -153,7 +159,7 @@ export default {
   created() {
     if (!BlockstackUtils.isUserSignedIn()) {
       // If user is not signed in we automatically redirect them to posts page
-      location.href = '#/posts'
+      // location.href = '#/posts'
     }
     initMdcInputsInternal()
   },

@@ -147,7 +147,7 @@ export default {
     },
     toggleLiveEmotions() {
       if (!State.liveEmotionsEnabled && !localStorage.liveEmotionExplanationShowed) {
-        if (confirm('Live emotions is an innovative feature, which uses your web camera to analyze your emotions and calculate the time of being happy o blockgag. Note, that your video is private and we don\'t send it anywhere.')) {
+        if (confirm('Live emotions is an innovative feature, which uses your web camera to analyze your emotions and calculate the time of being happy o blockgag. Note, that your video is private and we don\'t send it anywhere. Currently our algoithm can recognize happiness, sadness, surprise and anger')) {
           localStorage.liveEmotionExplanationShowed = true
           State.toggleLiveEmotions()  
         }

@@ -69,6 +69,9 @@ export default {
         let result = JSON.parse(JSON.stringify(this.posts))
         result.sort((p1, p2) => p2.createdAt - p1.createdAt)
 
+        // Scrolling up
+        window.$("html, body").animate({ scrollTop: 0 }, "slow")
+
         let selectedTag = this.State.selectedTag
         if (selectedTag && !['Hot', 'Trending', 'Fresh'].includes(selectedTag)) {
           return result.filter(p => (p.tags && p.tags.includes(selectedTag)))
@@ -76,13 +79,13 @@ export default {
 
         // TODO when likes and comments will be implemented
         // Hot and Trending will be filtered in better way
-        if (selectedTag == 'Hot' && result.length > 3) {
-          result = swap(result, 0, result.length - 1)
-          result = swap(result, 1, result.length - 2)
-        }
-        if (selectedTag == 'Trending' && result.length > 3) {
-          result = swap(result, 0, result.length - 2)
+        if (selectedTag == 'Hot' && result.length > 7) {
           result = swap(result, 1, result.length - 1)
+          result = swap(result, 2, result.length - 2)
+        }
+        if (selectedTag == 'Trending' && result.length > 7) {
+          result = swap(result, 1, result.length - 2)
+          result = swap(result, 2, result.length - 1)
         }
 
         return result
