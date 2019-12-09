@@ -1,14 +1,20 @@
 <template>
   <section id="live-emotions-explanation">
     <!-- <vue-particles color="#dedede"></vue-particles> -->
-    <div id="text-content">
-      <h2>Live emotions</h2>
+    <div
+      :class="{ 'fade-in-element': wasViewable }"
+      v-observe-visibility="visibilityChanged"
+      id="text-content">
+      <h2>
+        Live emotions
+      </h2>
       <p>
-        On blockgag you can use the brand new AI feature.
-        Blockgag algorithm can use video from your web camera (of course if you give access) to analyze facial
-        expressions and calculate the time of being happy on blockgag.
-        Note, that every video is private and is not sent anywhere.
-        Currently the live emotions algoithm can recognize happiness, sadness, surprise and anger.
+        Touch the future with the brand new AI feature on the BlockGAG.
+        Our algorithm can use video from your web camera (of course if you give access) to analyze facial
+        expressions and calculate the time of being happy the website.
+        Note, that each video from webcam is private and is not sent anywhere, AI algorithm works directly in your browser.
+        Currently the "live emotions" algoithm can recognize happiness, sadness, surprise and anger.
+        In the close future we'll add optional "likes by smiling" and "scrolling by nod" features.
       </p>
 
       <a href="/#/posts/" id="get-started-button" class="mdc-button mdc-button--raised">
@@ -45,6 +51,11 @@ Vue.use(VueParticles)
 
 
 export default {
+  data() {
+    return {
+      wasViewable: false,
+    }
+  },
   created() {
     
   },
@@ -52,6 +63,12 @@ export default {
     // goToPosts() {
     //   location.href = '/#/posts/'
     // }
+    visibilityChanged(isVisible) {
+      if (isVisible) {
+        this.wasViewable = true
+      }
+      
+    }
   },
 }
 </script>
@@ -77,7 +94,7 @@ p {
   text-align: left;
   width: 700px;
   margin: auto;
-  font-size: 3.1vh;
+  font-size: 2.4vh;
 
   color: white;
 }

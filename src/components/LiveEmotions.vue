@@ -6,6 +6,11 @@
       {{ expressionEmoji }}
     </span>
 
+    <!-- TODO add !ready -->
+    <span v-if="enabled && !ready" id="expression-emoji">
+      <img class="loader-img" src="../../public/oval.svg">
+    </span>
+
     <div id="live-emotions-stats" class="mdc-elevation--z1">
       <i class="material-icons centered" id="time-icon">alarm</i><br />
       <h2 class="centered">
@@ -39,9 +44,6 @@ async function startVideo(onExpressionsDetected) {
     })
     video = document.getElementById('video')
     video.srcObject = stream
-    setTimeout(() => {
-      window.toastr.success('ML is ready. Emoji should show your emotions now')
-    }, 200)
 
     timer = setInterval(async () => {
       let expressions = await detectExpressions()
@@ -124,6 +126,7 @@ export default {
   data() {
     return {
       expressions: {},
+      ready: false,
       happyTimeSeconds: (localStorage.happyTimeOnBlockgag || 0) / 1000,
     }
   },
@@ -167,6 +170,10 @@ export default {
         console.log('Starting video recording')
 
         startVideo((detectedExpressions) => {
+          if (!this.ready && detectedExpressions) {
+            this.ready = true
+            window.toastr.success('Algorithm is ready. Emoji should show your emotions now')
+          }
           this.expressions = detectedExpressions
           let newHappyTime = updateHappyTime(detectedExpressions)
           this.happyTimeSeconds = newHappyTime / 1000
@@ -174,6 +181,9 @@ export default {
       } else {
         console.log('Finishing video recording')
         stopVideo()
+        setTimeout(() => {
+          this.ready = false  
+        }, 200);
       }
     }
   }
@@ -225,6 +235,13 @@ export default {
   margin: auto;
   margin-top: 20px;
   display: block;
+}
+
+.loader-img {
+  position: fixed;
+  top: 140px;
+  right: 80px;
+  width: 100px;
 }
 
 </style>

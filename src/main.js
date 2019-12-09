@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueLazyload from 'vue-lazyload'
+import VueObserveVisibility from 'vue-observe-visibility'
 
 // import BlockstackUtils from './modules/blockstackUtils'
 
@@ -23,6 +24,7 @@ Vue.use(VueLazyload, {
   // observer: true,
   // loading: '../public/loading.gif',
 })
+Vue.use(VueObserveVisibility)
 
 BlockstackUtils.checkAuth()
 

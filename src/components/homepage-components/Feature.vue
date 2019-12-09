@@ -1,5 +1,8 @@
 <template>
-  <div class="mdc-layout-grid__cell feature-container">
+  <div
+    v-observe-visibility="visibilityChanged"
+    class="mdc-layout-grid__cell feature-container"
+    :class="{ 'pop-in-element': wasVisible }">
     <i class="material-icons">{{ icon }}</i>
     <h2>{{ title }}</h2>
     <p class="feature-description">
@@ -10,10 +13,22 @@
 
 <script>
 export default {
+  data() {
+    return {
+      wasVisible: false,
+    }
+  },
   props: {
     title: String,
     description: String,
     icon: String,
+  },
+  methods: {
+    visibilityChanged(isVisible) {
+      if (isVisible) {
+        this.wasVisible = true
+      }
+    }
   }
 }
 </script>

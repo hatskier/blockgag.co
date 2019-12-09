@@ -133,8 +133,6 @@ export default {
     height: 70px;
   }
 
-
-
   // DARK MODE STYLING
   body.dark-mode {
     background: black !important;

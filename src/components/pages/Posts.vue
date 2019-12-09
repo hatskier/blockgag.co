@@ -65,7 +65,9 @@ export default {
         result.sort((p1, p2) => p2.createdAt - p1.createdAt)
 
         // Scrolling up
-        window.$("html, body").animate({ scrollTop: 0 }, "slow")
+        // window.$("html, body").animate({ scrollTop: 0 }, "slow")
+        // Switched to pureJS, because of the new css style for scroll-behavior
+        window.scrollTo(0, 0)
 
         let selectedTag = this.State.selectedTag
         if (selectedTag && !['Hot', 'Trending', 'Fresh'].includes(selectedTag)) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="categories-list-container">
+  <div class="categories-list-container slide-left-element">
     <ul class="mdc-list">
       <TagInTagList title="Hot" icon="whatshot" />
       <TagInTagList title="Trending" icon="trending_up" />
