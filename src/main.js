@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueLazyload from 'vue-lazyload'
 
+// import BlockstackUtils from './modules/blockstackUtils'
+
 import App from './App.vue'
 
 import Home from './components/pages/Home.vue'
@@ -15,14 +17,22 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(VueLazyload, {
   lazyComponent: true,
-  preLoad: 1.3,
-  observer: true,
+  preLoad: 5,
+  // observer: true,
   // loading: '../public/loading.gif',
 })
 
+function getDefaultComponent() {
+  return Home
+  // if (BlockstackUtils.isUserSignedIn()) {
+  //   return Posts
+  // } else {
+  //   return Home
+  // }
+}
 
 const routes = [
-  { path: '/', component: Posts },
+  { path: '/', component: getDefaultComponent() },
   { path: '/home', component: Home },
   { path: '/posts', component: Posts },
   { path: '/posts/:category', component: Posts },

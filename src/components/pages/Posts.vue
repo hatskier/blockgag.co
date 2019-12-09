@@ -1,5 +1,5 @@
 <template>
-  <div class="mdc-layout-grid">
+  <div class="posts mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
       <div class="mdc-layout-grid__cell--span-3">
         <Tags />
@@ -9,11 +9,6 @@
           <div v-for="(post, index) in filteredPosts" :key="index" class="post">
             <Post :post="post" />
           </div>
-          <div class="post"></div>
-
-          <div class="post"></div>
-          <div class="post"></div>
-          <div class="post"></div>
         </div>
       </div>
       <div class="mdc-layout-grid__cell--span-3">
@@ -108,6 +103,10 @@ export default {
   height: 700px;
   width: 20%;
   position: fixed;
+}
+
+.posts {
+  margin-top: 60px;
 }
 
 </style>

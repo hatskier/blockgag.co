@@ -3,11 +3,11 @@
     <header class="mdc-top-app-bar mdc-top-app-bar--dense">
       <div class="mdc-top-app-bar__row">
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <a href="#/posts">
+          <a href="#/">
             <img id="navbar-logo" src="../../public/blockgag-logo.png" />
           </a>
           <!-- <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button> -->
-          <a class="normal-text" href="#/posts">
+          <a class="normal-text" href="#/">
             <span class="mdc-top-app-bar__title white">GAG</span>
           </a>
         </section>
@@ -15,8 +15,7 @@
         <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
           <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Download">file_download</button>
           <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button> -->
-          <div class="navbar-el">
-            <!-- TODO update with live emotions feature -->
+          <div v-if="State.path.includes('posts')" class="navbar-el">
             <button @click="toggleLiveEmotions()" class="mdc-button mdc-button--outlined">
               <div class="mdc-button__ripple"></div>
                 <span v-if="!State.liveEmotionsEnabled">
@@ -100,13 +99,13 @@ export default {
   name: "NavBar",
   data() {
     // State.loadStateFromBlockchain()
-
     return {
       userAvatar: BlockstackUtils.getUserAvatar(),
       signedIn: BlockstackUtils.isUserSignedIn(),
       modalType: '',
       dialog: null,
       State,
+      route: this.$router.currentRoute,
     }
   },
   computed: {

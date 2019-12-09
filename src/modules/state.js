@@ -5,6 +5,7 @@ import Blockchain from './blockstackUtils'
 
 let State = {
   // Fields
+  path: '',
   contacts: {},
   debts: {},
   syncStatus: 'Synced',
@@ -91,6 +92,9 @@ let State = {
     Vue.set(this, 'selectedTag', tag)
   },
 
+  setPath(path) {
+    Vue.set(this, 'path', path)
+  }
   // defaultRemove(el, collectionName, entityName) {
   //   if (!el.id) {
   //     throw new Error(`${entityName} without id can not be removed`)

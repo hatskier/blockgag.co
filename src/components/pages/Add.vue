@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="add-page-content">
     <div class="add-card">
 
       <!-- TODO implement it again later -->
@@ -255,6 +255,10 @@ export default {
 </script>
 
 <style scoped>
+#add-page-content {
+  margin-top: 60px;
+}
+
 .add-card {
   width: 700px;
   margin: auto;
@@ -326,5 +330,6 @@ export default {
   border-radius: 5px;
   border: 1px solid gray;
 }
+
 
 </style>

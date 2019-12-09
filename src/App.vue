@@ -18,6 +18,8 @@
 <script>
 import NavBar from './components/NavBar'
 import BlockstackUtils from './modules/blockstackUtils'
+import State from './modules/state'
+
 
 BlockstackUtils.checkAuth().then(() => {
   if (localStorage.locationBeforeRedirection) {
@@ -38,9 +40,17 @@ window.toastr.options = {
 
 export default {
   name: 'app',
+  created() {
+    State.setPath(this.$router.currentRoute.fullPath)
+  },
   data() {
     return {
       BlockstackUtils,
+    }
+  },
+  watch: {
+    $route(to) {
+      State.setPath(to.fullPath)
     }
   },
   components: {
@@ -50,6 +60,8 @@ export default {
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
+<style src="./styles/animations.css"></style>
 
 <style lang="scss">
   // TODO connect from the same origin later
@@ -62,21 +74,18 @@ export default {
   // $mdc-theme-secondary: #00be00;
   @import "material-components-web/material-components-web";
 
-  header {
+  * {
     margin: 0;
+    padding: 0;
   }
 
-  body {
-    margin: 0;
+  html {
+    scroll-behavior: smooth;
   }
 
-  .view {
-    margin-top: 60px;
-  }
-
-  #app {
-    margin: 0;
-  }
+  // .view {
+  //   margin-top: 60px;
+  // }
 
   .centered {
     margin: auto;
@@ -136,5 +145,13 @@ export default {
     // filter: invert(100%);
     color: yellow;
   }
-
+  body.dark-mode i {
+    color: white;
+  }
+  body.dark-mode h2 {
+    color: white;
+  }
+  body.dark-mode p {
+    color: white;
+  }
 </style>
