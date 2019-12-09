@@ -6,6 +6,8 @@ import VueLazyload from 'vue-lazyload'
 
 import App from './App.vue'
 
+import BlockstackUtils from './modules/blockstackUtils'
+
 import Home from './components/pages/Home.vue'
 import Posts from './components/pages/Posts.vue'
 import Post from './components/pages/Post.vue'
@@ -20,6 +22,14 @@ Vue.use(VueLazyload, {
   preLoad: 5,
   // observer: true,
   // loading: '../public/loading.gif',
+})
+
+BlockstackUtils.checkAuth().then(() => {
+  if (localStorage.locationBeforeRedirection) {
+    let urlToRedirect = localStorage.locationBeforeRedirection
+    localStorage.removeItem('locationBeforeRedirection')
+    location.href = urlToRedirect
+  }
 })
 
 function getDefaultComponent() {

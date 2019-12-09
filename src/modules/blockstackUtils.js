@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import blockstack from 'blockstack'
 import { User, configure, getConfig } from 'radiks'
 import axios from 'axios'
@@ -64,7 +65,7 @@ export default {
     userSession = getConfig().userSession
     if (userSession.isSignInPending()) {
       try {
-        this.pendingAuth = true
+        Vue.set(this, 'pendingAuth', true)
         await userSession.handlePendingSignIn()
         // await new Promise(resolve => setTimeout(async () => {
         //   await User.createWithCurrentUser()
@@ -74,7 +75,7 @@ export default {
       } catch (e) {
         console.error(e)
       } finally {
-        this.pendingAuth = false
+        Vue.set(this, 'pendingAuth', false)
       }
     }
 

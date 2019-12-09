@@ -20,15 +20,6 @@ import NavBar from './components/NavBar'
 import BlockstackUtils from './modules/blockstackUtils'
 import State from './modules/state'
 
-
-BlockstackUtils.checkAuth().then(() => {
-  if (localStorage.locationBeforeRedirection) {
-    let urlToRedirect = localStorage.locationBeforeRedirection
-    localStorage.removeItem('locationBeforeRedirection')
-    location.href = urlToRedirect
-  }
-})
-
 window.toastr.options = {
   "closeButton": true,
   "progressBar": false,
@@ -153,5 +144,8 @@ export default {
   }
   body.dark-mode p {
     color: white;
+  }
+  body.dark-mode .black-in-dark-mode {
+    color: black !important;
   }
 </style>
