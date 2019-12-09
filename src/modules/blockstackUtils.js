@@ -75,7 +75,13 @@ export default {
       } catch (e) {
         console.error(e)
       } finally {
-        Vue.set(this, 'pendingAuth', false)
+        if (localStorage.locationBeforeRedirection) {
+          let urlToRedirect = localStorage.locationBeforeRedirection
+          localStorage.removeItem('locationBeforeRedirection')
+          location.href = urlToRedirect
+        } else {
+          Vue.set(this, 'pendingAuth', false)
+        }
       }
     }
 

@@ -15,6 +15,7 @@
 
     <button
       @click="onLogInButtonClicked()"
+      id="log-in-to-blockstack-button"
       class="mdc-button mdc-button--raised continue-with-blockstack-button" >
       <div class="mdc-button__ripple"></div>
         LOG IN TO BLOCKSTACK
@@ -42,7 +43,12 @@ export default {
 
   p.blockstack-description {
     margin-left: 5px;
+    margin-top: 10px;
     text-align: justify;
     width: 300px;
+  }
+
+  #log-in-to-blockstack-button {
+    margin-top: 20px;
   }
 </style>

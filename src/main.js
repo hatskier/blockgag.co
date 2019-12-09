@@ -24,13 +24,7 @@ Vue.use(VueLazyload, {
   // loading: '../public/loading.gif',
 })
 
-BlockstackUtils.checkAuth().then(() => {
-  if (localStorage.locationBeforeRedirection) {
-    let urlToRedirect = localStorage.locationBeforeRedirection
-    localStorage.removeItem('locationBeforeRedirection')
-    location.href = urlToRedirect
-  }
-})
+BlockstackUtils.checkAuth()
 
 function getDefaultComponent() {
   return Home
