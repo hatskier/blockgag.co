@@ -2,7 +2,7 @@
   <div
     v-observe-visibility="visibilityChanged"
     class="mdc-layout-grid__cell feature-container"
-    :class="{ 'pop-in-element': wasVisible }">
+    :class="{ 'fade-in-element': wasVisible }">
     <i class="material-icons">{{ icon }}</i>
     <h2>{{ title }}</h2>
     <p class="feature-description">
