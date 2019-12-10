@@ -9,10 +9,10 @@
         Live emotions
       </h2>
       <p>
-        Touch the future with the brand new AI feature on the BlockGAG.
+        Touch the future with the brand new AI feature on the blockgag.co.
         Our algorithm can use video from your web camera (of course if you give access) to analyze your facial
         expressions and calculate the time of being happy on the website.
-        Note, that each video from webcam is private and is not sent anywhere, AI algorithm works directly in your browser.
+        Note, that each  webcam video is private and is not sent anywhere, AI algorithm works directly in your browser.
         Currently the "live emotions" algoithm can recognize happiness, sadness, surprise and anger.
         In the close future we'll add optional "likes by smiling" and "scrolling by nod" features.
       </p>

@@ -32,6 +32,8 @@ let video
 let stream
 let timer
 
+let hackyStopSignalSent = false
+
 async function startVideo(onExpressionsDetected) {
   try {
     video = document.getElementById('video')
@@ -49,6 +51,10 @@ async function startVideo(onExpressionsDetected) {
       let expressions = await detectExpressions()
       onExpressionsDetected(expressions)
     }, tickSize)
+
+    if (hackyStopSignalSent) {
+      stopVideo()
+    }
   } catch (e) {
     window.toastr.error('Video initialization failed :(')
     console.error(e)
@@ -167,6 +173,8 @@ export default {
   watch: {
     enabled: function(newVal) {
       if (newVal) {
+        hackyStopSignalSent = false
+
         console.log('Starting video recording')
 
         startVideo((detectedExpressions) => {
@@ -181,9 +189,10 @@ export default {
       } else {
         console.log('Finishing video recording')
         stopVideo()
+        hackyStopSignalSent = true
         setTimeout(() => {
-          this.ready = false  
-        }, 200);
+          this.ready = false
+        }, tickSize * 2)
       }
     }
   }
