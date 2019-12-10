@@ -22,7 +22,7 @@ Vue.use(VueLazyload, {
   lazyComponent: true,
   preLoad: 5,
   // observer: true,
-  // loading: '../public/loading.gif',
+  loading: './loading.gif',
 })
 Vue.use(VueObserveVisibility)
 
