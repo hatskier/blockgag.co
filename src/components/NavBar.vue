@@ -44,12 +44,13 @@
               class="mdc-icon-button material-icons white add-photo-icon">
               brightness_4
             </a>
-            
+
           </div>
           
           <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button> -->
 
           <div class="navbar-el">
+            
             <div @click="openMenu()" class="account-circle mdc-menu-surface--anchor">
               <img
                 v-if="signedIn && userAvatar"

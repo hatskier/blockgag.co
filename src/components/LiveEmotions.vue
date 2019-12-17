@@ -8,7 +8,8 @@
 
     <!-- TODO add !ready -->
     <span v-if="enabled && !ready" id="expression-emoji">
-      <img class="loader-img" src="../../public/oval.svg">
+      <!-- <img class="loader-img" src="../../public/oval.svg"> -->
+      <img class="loader-img" src="../../public/loader.svg">
     </span>
 
     <div id="live-emotions-stats" class="mdc-elevation--z1">
@@ -16,14 +17,25 @@
       <h2 class="centered">
         {{ happyTimeSeconds }}
       </h2>
-      <p id="seconds-text" class="centered">seconds</p>
-      <p id="happy-time-text" class="centered">Happy time on blockgag</p>
+      <p id="seconds-text" class="centered">seconds of smiling</p>
+      <!-- <p id="happy-time-text" class="centered">Happy time on blockgag</p> -->
+    </div>
+
+    <div id="live-emotions-stats-2" class="mdc-elevation--z1">
+      <i class="material-icons centered" id="time-icon">mood</i><br />
+      <h2 class="centered">
+        {{ likedPostsNumber }}
+      </h2>
+      <p id="posts-liked-number">
+        Posts liked by smiling
+      </p>
     </div>
   </div>
 </template>
 
 <script>
 import { nets, detectAllFaces, TinyFaceDetectorOptions } from 'face-api.js'
+import State from '../modules/state'
 
 const tickSize = 300 // ms
 let video
@@ -37,7 +49,7 @@ let hackyStopSignalSent = false
 async function startVideo(onExpressionsDetected) {
   try {
     video = document.getElementById('video')
-    window.toastr.success('ML models loading started')
+    window.toastr.success('Loading...')
     await loadMLModels()
 
     stream = await navigator.mediaDevices.getUserMedia({
@@ -81,10 +93,18 @@ async function loadMLModels() {
 
 async function detectExpressions() {
   let detections = await detectAllFaces(video, new TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+  // console.log(detections[0].landmarks.relativePositions[1])
   if (detections && detections[0]) {
     return detections[0].expressions
   } else {
     return {}
+  }
+}
+
+function tryToLikeTheCurrentPost() {
+  let visiblePostId = State.visiblePost
+  if (visiblePostId) {
+    State.likePost(visiblePostId)
   }
 }
 
@@ -93,6 +113,7 @@ function updateHappyTime(expressions) {
   let prevHappyTime = localStorage.happyTimeOnBlockgag
   if (expressions.happy > 0.4) {
     localStorage.happyTimeOnBlockgag = (Number(prevHappyTime) || 0) + tickSize
+    tryToLikeTheCurrentPost()
   }
   return localStorage.happyTimeOnBlockgag
 }
@@ -168,6 +189,9 @@ export default {
         }
       }
       return emoji.neutral
+    },
+    likedPostsNumber() {
+      return Object.keys(State.likes).length
     }
   },
   watch: {
@@ -223,6 +247,14 @@ export default {
   right: 30px;
 }
 
+#live-emotions-stats-2 {
+  width: 206px;
+  /* height: 300px; */
+  top: 460px;
+  position: fixed;
+  right: 30px;
+}
+
 #live-emotions-stats h2 {
   /* margin-top: 5px; */
   font-size: 40px;
@@ -230,8 +262,15 @@ export default {
   margin-top: -5px;
 }
 
+#live-emotions-stats-2 h2 {
+  font-size: 40px;
+  color: #00be00;
+  margin-top: -5px;
+}
+
 #seconds-text {
   margin-bottom: 20px;
+  font-size: 12px;
 }
 
 #happy-time-text {
@@ -251,6 +290,12 @@ export default {
   top: 140px;
   right: 80px;
   width: 100px;
+}
+
+#posts-liked-number {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 20px;
 }
 
 </style>

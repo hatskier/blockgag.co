@@ -2,22 +2,23 @@
   <section id="live-emotions-explanation">
     <!-- <vue-particles color="#dedede"></vue-particles> -->
     <div
-      :class="{ 'slide-left-element': wasViewable }"
       v-observe-visibility="visibilityChanged"
       id="text-content">
-      <h2>
-        Live emotions
+      <h2 class="init-hidden" :class="{ 'slide-down-element': wasViewable }">
+        Touch the future
       </h2>
-      <p>
-        Touch the future with the brand new AI feature on the blockgag.co.
+      <p class="init-hidden" :class="{ 'slide-down-element-delay-05s': wasViewable }">
+        Try the brand new AI feature on the blockgag.co.
         Our algorithm can use video from your web camera (of course if you give access) to analyze your facial
-        expressions and calculate the time of being happy on the website.
+        expressions and calculate the time of being happy on the website. You also can like posts simply by smiling. 
         Note, that each  webcam video is private and is not sent anywhere, AI algorithm works directly in your browser.
         Currently the "live emotions" algoithm can recognize happiness, sadness, surprise and anger.
-        In the close future we'll add optional "likes by smiling" and "scrolling by nod" features.
       </p>
 
-      <a href="/#/posts/" id="get-started-button" class="mdc-button mdc-button--raised">
+      <a
+        href="/#/posts/" id="get-started-button"
+        class="mdc-button mdc-button--raised init-hidden"
+        :class="{ 'slide-down-element-delay-1s': wasViewable }">
         <div class="mdc-button__ripple"></div>
         <span class="mdc-button__label">
           TRY BLOCKGAG
@@ -81,7 +82,9 @@ export default {
 }
 h2 {
   text-align: center;
-  padding-top: 23vh;
+  /* margin-top: 23vh; */
+  position: relative;
+  top: 23vh;
   padding-bottom: 20px;
   color: white;
   z-index: 10;
@@ -94,6 +97,8 @@ p {
   text-align: left;
   width: 700px;
   margin: auto;
+  position: relative;
+  top: 23vh;
   font-size: 2.4vh;
 
   color: white;
@@ -103,12 +108,16 @@ p {
   width: 100%;
   height: 100vh;
   /* background: #f8fafd; */
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url('../../../public/bg-earth.jpg') center center no-repeat;;
+  /* background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url('../../../public/bg-earth.jpg') center center no-repeat;; */
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url('../../../public/future-dark-image.jpg') center center no-repeat;
+  /* background: black; */
 }
 
 #get-started-button {
   margin-top: 40px;
   font-size: 20px;
+  position: relative;
+  top: 23vh;
   /* padding: 10px; */
   height: 60px;
 }

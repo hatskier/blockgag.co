@@ -11,6 +11,8 @@ let State = {
   syncStatus: 'Synced',
   liveEmotionsEnabled: false,
   selectedTag: '',
+  visiblePost: '',
+  likes: {},
 
   // Methods
   async loadStateFromBlockchain() {
@@ -23,6 +25,29 @@ let State = {
     if (debts) {
       Vue.set(this, 'debts', debts)
     }
+  },
+
+  likePost(postId) {
+    if (this.likes[postId]) {
+      return
+    }
+    console.log('Liking the post: ' + postId)
+    Vue.set(this.likes, postId, true)
+    this.syncLikesWithLocalStorage()
+  },
+
+  syncLikesWithLocalStorage() {
+    console.log('SYNCING LIKES WITH LOCAL STORAGE')
+    if (localStorage.blockgagLikes) {
+      let likesFromLocalStorage = JSON.parse(localStorage.blockgagLikes)
+      for (let likeLS in likesFromLocalStorage) {
+        if (!this.likes[likeLS]) {
+          Vue.set(this.likes, likeLS, true)
+        }
+      }
+    }
+    // Saving likes from State to local storage
+    localStorage.blockgagLikes = JSON.stringify(this.likes)
   },
 
   async updateStateToBlockchain({
@@ -94,7 +119,13 @@ let State = {
 
   setPath(path) {
     Vue.set(this, 'path', path)
-  }
+  },
+
+  setVisiblePost(postId) {
+    console.log('Set visible post to: ' + postId)
+    Vue.set(this, 'visiblePost', postId)
+  },
+  
   // defaultRemove(el, collectionName, entityName) {
   //   if (!el.id) {
   //     throw new Error(`${entityName} without id can not be removed`)

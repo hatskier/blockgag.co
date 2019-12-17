@@ -2,7 +2,7 @@
   <section id="splash">
     <div id="splash-content">
       <!-- <video id="splash-video" src="../../../public/laugh-cropped.mp4" /> -->
-      <h1 class="slide-down-element" id="h1-title">
+      <h1 class="fade-in-element init-hidden" id="h1-title">
         <vue-typed-js
           :strings="['Decentralized', 'AI powered', 'Open source', 'Free', 'The best']"
           :showCursor="false"
@@ -17,7 +17,7 @@
         source of fun
       </h1>
 
-      <div id="get-started-button-container">
+      <div  class="init-hidden slide-down-element-delay-05s" id="get-started-button-container">
         <a href="/#/posts/" id="get-started-button" class="mdc-button mdc-button--outlined">
           <div class="mdc-button__ripple"></div>
           <span class="mdc-button__label">

@@ -14,6 +14,7 @@
       <TagInTagList title="Memes" icon="face" />
       <TagInTagList title="GIFs" icon="gif" />
       <TagInTagList title="Gaming" icon="videogame_asset" />
+      <TagInTagList title="Animals" icon="pets" />
       <!-- <TagInTagList title="Video" icon="ondemand_video" /> -->
     </ul>
   </div>
