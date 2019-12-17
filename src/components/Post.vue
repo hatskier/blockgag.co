@@ -8,6 +8,7 @@
       {{ post.description }}
     </div>
     <!-- {{ post._id }} -->
+    <!-- {{ post._id }} -->
 
     <!-- <div class="tags">
       {{ post.tags }}

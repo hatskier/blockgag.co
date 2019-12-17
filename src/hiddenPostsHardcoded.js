@@ -13,6 +13,7 @@ const hiddenPosts = [
   'bb7d59f426c2-4458-a2ae-e41a2910af26',
   'a5a479b3e092-47f4-814a-597f98a1cc98',
   '7c07613bf461-476a-8f82-37857a1dc34b',
+  '549d2e1b2e31-4361-bd76-04804feb818a',
 ]
 
 export default hiddenPosts

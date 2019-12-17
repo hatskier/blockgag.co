@@ -113,7 +113,7 @@ function updateHappyTime(expressions) {
   let prevHappyTime = localStorage.happyTimeOnBlockgag
   if (expressions.happy > 0.4) {
     localStorage.happyTimeOnBlockgag = (Number(prevHappyTime) || 0) + tickSize
-    tryToLikeTheCurrentPost()
+    // tryToLikeTheCurrentPost()
   }
   return localStorage.happyTimeOnBlockgag
 }
@@ -155,6 +155,9 @@ export default {
       expressions: {},
       ready: false,
       happyTimeSeconds: (localStorage.happyTimeOnBlockgag || 0) / 1000,
+      accumulatedHappiness: 0,
+      State,
+      lastVisiblePost: null,
     }
   },
   computed: {
@@ -194,6 +197,21 @@ export default {
       return Object.keys(State.likes).length
     }
   },
+  methods: {
+    updateAccumulatedHappiness(expressions) {
+      // We start calculating accumulated laugh every time from
+      // the beginning when new post visible
+
+      
+      if (expressions && expressions.happy > 0.5 && State.visiblePost == this.lastVisiblePost) {
+        this.accumulatedHappiness += 0.3
+      } else {
+        this.accumulatedHappiness = 0
+      }
+      // Updating this.lastVisible post
+      this.lastVisiblePost = State.visiblePost
+    },
+  },
   watch: {
     enabled: function(newVal) {
       if (newVal) {
@@ -208,7 +226,12 @@ export default {
           }
           this.expressions = detectedExpressions
           let newHappyTime = updateHappyTime(detectedExpressions)
+          this.updateAccumulatedHappiness(detectedExpressions)
           this.happyTimeSeconds = newHappyTime / 1000
+
+          if (this.accumulatedHappiness >= 2) {
+            tryToLikeTheCurrentPost()
+          }
         })
       } else {
         console.log('Finishing video recording')
