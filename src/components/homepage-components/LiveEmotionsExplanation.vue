@@ -8,15 +8,16 @@
         Touch the future
       </h2>
       <p class="init-hidden" :class="{ 'slide-down-element-delay-05s': wasViewable }">
-        Try the brand new AI feature on the blockgag.co.
+        Try the brand new AI feature on blockgag.co.
         Our algorithm can use video from your web camera (of course if you give access) to analyze your facial
         expressions and calculate the time of being happy on the website. You also can like posts simply by smiling. 
-        Note, that each  webcam video is private and is not sent anywhere, AI algorithm works directly in your browser.
-        Currently the "live emotions" algoithm can recognize happiness, sadness, surprise and anger.
+        Each webcam video is private and is not sent anywhere, AI algorithm works directly in your browser.
+        Our app code is open-source, so everyone can <a class="link-in-text" href="https://github.com/hatskier/blockgag.co" target="_blank"> check it on Github </a>.
+        Currently the "live emotions" algorithm can recognize happiness, sadness, surprise and anger.
       </p>
 
       <a
-        href="/#/posts/" id="get-started-button"
+        href="/#/posts/Hot" id="get-started-button"
         class="mdc-button mdc-button--raised init-hidden"
         :class="{ 'slide-down-element-delay-1s': wasViewable }">
         <div class="mdc-button__ripple"></div>
@@ -120,6 +121,10 @@ p {
   top: 23vh;
   /* padding: 10px; */
   height: 60px;
+}
+
+.link-in-text {
+  color: white;
 }
 
 /* .particles-js-canvas-el { */

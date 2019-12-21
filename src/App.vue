@@ -61,6 +61,7 @@ export default {
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style src="./styles/animations.css"></style>
+<style src="./styles/arrow-down.css"></style>
 
 <style lang="scss">
   // TODO connect from the same origin later

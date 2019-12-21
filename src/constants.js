@@ -17,12 +17,20 @@ export default {
       icon: 'gif'
     },
     {
-      title: 'Animals',
-      icon: 'pets'
+      title: 'Coding',
+      icon: 'code'
     },
+    // {
+    //   title: 'Relationship',
+    //   icon: 'favorite_border'
+    // },
     {
       title: 'Gaming',
       icon: 'videogame_asset'
+    },
+    {
+      title: 'Animals',
+      icon: 'pets'
     },
     // {
     //   title: 'Video',

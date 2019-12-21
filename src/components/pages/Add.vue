@@ -11,7 +11,7 @@
       </p> -->
       <p class="centered" v-if="addedPostUrl">
         Go back to the 
-        <a href="#/posts">
+        <a href="#/posts/Hot">
           Posts page
         </a>
       </p>

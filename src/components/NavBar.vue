@@ -19,7 +19,7 @@
             <button @click="toggleLiveEmotions()" class="mdc-button mdc-button--outlined">
               <div class="mdc-button__ripple"></div>
                 <span v-if="!State.liveEmotionsEnabled">
-                  TRY LIVE EMOTIONS
+                  LIVE EMOTIONS
                 </span>
                 <span v-if="State.liveEmotionsEnabled">
                   STOP LIVE EMOTIONS

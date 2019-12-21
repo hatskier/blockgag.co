@@ -68,12 +68,12 @@ export default {
         },
         {
           title: 'For everyone',
-          description: 'Everyone who is signed in to blockstack can post new funny stuff',
+          description: 'Everyone who is signed in to blockstack can post new funny images',
           icon: 'people',
         },
         {
           title: 'Categorised',
-          description: 'You can explore different categories of FUN on blockgag',
+          description: 'You can explore different categories of funny images on blockgag',
           icon: 'category',
         },
         {

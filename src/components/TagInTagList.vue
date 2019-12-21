@@ -1,11 +1,13 @@
 <template>
-  <li @click="State.selectTag(title)" class="mdc-list-item" :class="{'mdc-list-item--selected': State.selectedTag == title}" tabindex="0">
-    <span class="mdc-list-item__text">
-      <i v-if="icon" class="material-icons">{{ icon }}</i>
-      <img v-if="img" class="tag-img" src="../../public/blockstack-icon.png" />
-      {{ title }}
-    </span>
-  </li>
+  <a :href="'#/posts/' + title">
+    <li class="mdc-list-item" :class="{'mdc-list-item--selected': State.selectedTag == title}" tabindex="0">
+      <span class="mdc-list-item__text">
+        <i v-if="icon" class="material-icons">{{ icon }}</i>
+        <img v-if="img" class="tag-img" src="../../public/blockstack-icon.png" />
+        {{ title }}
+      </span>
+    </li>
+  </a>
 </template>
 
 <script>
@@ -32,5 +34,10 @@ export default {
   position: relative;
   margin-right: 10px;
   top: 5px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
 </style>

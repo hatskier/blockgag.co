@@ -18,7 +18,7 @@
       </h1>
 
       <div  class="init-hidden slide-down-element-delay-05s" id="get-started-button-container">
-        <a href="/#/posts/" id="get-started-button" class="mdc-button mdc-button--outlined">
+        <a href="/#/posts/Hot" id="get-started-button" class="mdc-button mdc-button--raised">
           <div class="mdc-button__ripple"></div>
           <span class="mdc-button__label">
             TRY IT NOW
@@ -28,8 +28,11 @@
       </div>
       
 
-      <div class="mousey" @click="scrollToSection('features-section')">
+      <!-- <div class="mousey" @click="scrollToSection('features-section')">
         <div class="scroller"></div>
+      </div> -->
+
+      <div class="scroll-down-arrow" @click="scrollToSection('features-section')">
       </div>
     </div>
   </section>
@@ -74,7 +77,7 @@ export default {
   }
 
   #splash-content {
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url('../../../public/laugh-bg.gif') center center no-repeat;;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('../../../public/laugh-kid.jpg') center center no-repeat;;
     /* background: black; */
     background-size: cover;
     height: 110vh;

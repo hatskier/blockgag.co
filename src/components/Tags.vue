@@ -2,19 +2,28 @@
   <div class="categories-list-container slide-left-element">
     <ul class="mdc-list">
       <TagInTagList title="Hot" icon="whatshot" />
-      <TagInTagList title="Trending" icon="trending_up" />
-      <TagInTagList title="Fresh" icon="query_builder" />
+      <!-- <TagInTagList title="Trending" icon="trending_up" />
+      <TagInTagList title="Fresh" icon="query_builder" /> -->
     </ul>
 
     <p class="subheader">POPULAR</p>
 
     <ul class="mdc-list">
-      <TagInTagList title="Funny" icon="mood" />
+      <TagInTagList
+        v-for="tag in tags"
+        :key="tag.title"
+        :title="tag.title"
+        :img="tag.img"
+        :icon="tag.icon" />
+      <!-- <TagInTagList title="Funny" icon="mood" />
       <TagInTagList title="Blockstack" img="../../public/blockstack-icon.png" />
       <TagInTagList title="Memes" icon="face" />
       <TagInTagList title="GIFs" icon="gif" />
+      <TagInTagList title="Coding" icon="code" />
+      <TagInTagList title="Relationship" icon="favorite_border" />
       <TagInTagList title="Gaming" icon="videogame_asset" />
-      <TagInTagList title="Animals" icon="pets" />
+      <TagInTagList title="Animals" icon="pets" /> -->
+      <!-- <TagInTagList title="Sport" icon="sports_basketball" /> -->
       <!-- <TagInTagList title="Video" icon="ondemand_video" /> -->
     </ul>
   </div>
@@ -23,12 +32,14 @@
 <script>
 import State from '../modules/state'
 import TagInTagList from './TagInTagList'
+import constants from '../constants'
 
 export default {
   name: "Categories",
   data() {
     return {
       State,
+      tags: constants.tags
     }
   },
   props: {
