@@ -1,5 +1,16 @@
 <template>
   <div class="posts mdc-layout-grid">
+
+    <!-- <div id="help-us-make-it-better-container"> -->
+    <a class="help-link slide-down-element-delay-1s-scale-down init-hidden" target="_blank" href="https://alex220493.typeform.com/to/opLBAw">
+      <!-- <img class="thanks-emoji" src="../../../public/thanks-emoji.png" /> -->
+      HELP US
+      <i class="material-icons">star_border</i>
+      <br />
+      <span>by sharing your feedback</span>
+    </a>
+    <!-- </div> -->
+
     <div class="mdc-layout-grid__inner">
       <div class="mdc-layout-grid__cell--span-3">
         <Tags />
@@ -114,4 +125,40 @@ export default {
   margin-top: 60px;
 }
 
+.help-link {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  border-radius: 5px 15px;
+  width: 120px;
+  height: 60px;
+  color: white;
+  text-align: center;
+  z-index: 10;
+  background: #00be00;
+  text-decoration: none;
+  font-weight: 500;
+  
+}
+
+.help-link i {
+  position: relative;
+  left: 5px;
+}
+
+.help-link:hover {
+  opacity: 0.5;
+}
+
+.help-link span {
+  font-size: 10px;
+}
+
+.thanks-emoji {
+  width: 40px;
+  display: inline;
+  /* margin: auto; */
+
+}
 </style>

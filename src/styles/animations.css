@@ -29,6 +29,10 @@
   animation: fade-slide-down 1s ease 1s forwards;
 }
 
+.slide-down-element-delay-1s-scale-down {
+  animation: fade-slide-down-scale-down 1s ease 1s forwards;
+}
+
 .slide-left-element {
   animation: fade-slide-left 1s ease 0s forwards;
 }
@@ -41,6 +45,17 @@
   100% {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes fade-slide-down-scale-down {
+  0% {
+    opacity: 0;
+    transform: translateY(200px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.8);
   }
 }
 
