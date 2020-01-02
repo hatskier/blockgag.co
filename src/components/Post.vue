@@ -1,8 +1,10 @@
 <template>
-  <div v-if="!isHidden" :id="'post' + post._id" class="post mdc-elevation--z1">
+  <div v-if="!isHidden && post.imgGaiaPublicUrl" :id="'post' + post._id" class="post mdc-elevation--z1">
     <!-- {{ post._id }}
     |||
     {{ State.visiblePost }} -->
+
+    <!-- {{ post }} -->
 
     <div v-if="post.description" class="post-description">
       {{ post.description }}
