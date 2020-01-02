@@ -1,13 +1,16 @@
-# blockgag.co
+# BlockGAG
 
-Web app like 9gag built on blockstack. It is:
+Web app like 9gag built on blockstack. BlockGAG is:
 - Ads-free
 - Secure
 - Decentralised
-- AI "live emotions" feature
+- AI-powered
+
+## Please comment and like the project on Devpost
+https://devpost.com/software/blockgag
 
 ## More about "live emotions" feature
-TODO add description
+Users can enable access to their camera and AI algorithm recognise their emotions, calculating time of having fun on the website and liking posts simply by smiling.
 
 ## To develop
 ```bash
