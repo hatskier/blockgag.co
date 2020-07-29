@@ -1,6 +1,6 @@
 // Currently we use this hack to hide not funny memes that were added for testing
-// In future I will implement mechanism to report inapropriate or not funny posts
-// And autmated hidding (e.g. when 3 reports received)
+// In future I will implement mechanism to report inappropriate or not funny posts
+// And automated hiding (e.g. when 3 reports received)
 
 const hiddenPosts = [
   'a763e6e7ac8e-42d7-8185-25518a99b713',

@@ -1,5 +1,7 @@
 # BlockGAG
 
+This is a hackathon project ;)
+
 Web app like 9gag built on blockstack. BlockGAG is:
 - Ads-free
 - Secure
