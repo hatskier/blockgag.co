@@ -14,7 +14,7 @@
     "face-api.js": "^0.21.0",
     "filepond": "^4.7.4",
     "javascript-time-ago": "^2.0.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "material-components-web": "^4.0.0",
     "particles.js": "^2.0.0",
     "radiks": "^0.2.1",
